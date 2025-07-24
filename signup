@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <style>
+     body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url("images/02.jpg"); /* Replace with your background image */
+            background-size: cover;
+            background-position: center;
+        }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      width: 400px; /* Form width */
+      text-align: center;
+      backdrop-filter: blur(10px); /* Blur effect */
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .container h2 {
+      margin-bottom: 20px;
+      color: #fff;
+      font-size: 28px; /* Increased font size */
+    }
+
+    form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    form input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 5px;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      font-size: 16px;
+    }
+
+    form input::placeholder {
+      color: rgba(0, 0, 0, 0.7);
+    }
+
+    form .terms {
+      font-size: 14px;
+      margin: 15px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    form button {
+      width: 100%;
+      padding: 12px;
+      background-color: #ffffff; /* Green */
+      color: rgb(0, 0, 0);
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    form button:hover {
+      background-color: #ffffff; /* Darker green on hover */
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .divider span {
+      padding: 0 10px;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 14px;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .social {
+      width: 100%;
+      padding: 12px;
+      background-color: #ffffff; /* Google red */
+      color: rgb(0, 0, 0);
+      border: black;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .social.google:hover {
+      background-color: #c33d2e; /* Darker red on hover */
+    }
+
+    .SIGNUP {
+      margin-top: 20px;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .SIGNUP a {
+      color: #4CAF50;
+      text-decoration: none;
+    }
+
+    .SIGNUP a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Sign Up</h2>
+    <form action="/api/signup" method="POST" id="signup-form">
+      <input type="text" placeholder="Username" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <input type="password" id="rePassword" placeholder="Re-enter Password" required>
+      <p id="errorMessage" style="color: red; display: none;">Passwords do not match!</p>
+      <label class="terms">
+        <input type="checkbox" required> Accept Terms [&] Conditions
+      </label>
+      <button type="submit">Submit</button>
+    </form>
+    <div class="divider"><span>or</span></div>
+    <button class="social google" id="google-signup">Sign up with Google</button>
+    <div class="SIGNUP">
+      Already have an account? <a href="login.html">Login</a>
+    </div>
+  </div>
+
+  <script>
+    // Redirect to Login Page (if applyNow button exists)
+    if (document.getElementById("applyNow")) {
+        document.getElementById("applyNow").addEventListener("click", function () {
+            window.location.href = "/login";
+        });
+    }
+
+    // Signup Form Submission (if signup-form exists)
+    if (document.getElementById("signup-form")) {
+        document.getElementById("signup-form").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const username = document.querySelector("#signup-form input[type='text']").value;
+            const password = document.getElementById("password").value;
+            const rePassword = document.getElementById("rePassword").value;
+            const errorMessage = document.getElementById("errorMessage");
+
+            if (password !== rePassword) {
+                errorMessage.style.display = "block";
+                errorMessage.textContent = "Passwords do not match.";
+            } else {
+                errorMessage.style.display = "none";
+                fetch('/api/signup', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                })
+                .then(response => response.text())
+                .then(data => {
+                    if (data === 'User created successfully') {
+                        alert("Sign up successful!");
+                        window.location.href = "/login";
+                    } else {
+                        alert(data);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert("An error occurred during signup. Please try again.");
+                });
+            }
+        });
+    }
+  </script>
+</body>
+</html>
