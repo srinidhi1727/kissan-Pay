@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farmer Credit Card Registration</title>
+  <style>
+    /* Include only the necessary styles for the form */
+    form {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    form h2, form h3 {
+      color: #28a745;
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .form-section {
+      margin-bottom: 20px;
+      padding: 10px 20px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      background-color: #f9f9f9;
+    }
+
+    .form-section h3 {
+      margin-bottom: 10px;
+      text-align: left;
+      font-size: 18px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-top: 10px;
+      font-size: 14px;
+      color: #333;
+    }
+
+    input[type="text"], input[type="email"], input[type="date"], input[type="tel"], textarea, select, input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 14px;
+      background-color: #fff;
+    }
+
+    textarea {
+      resize: none;
+      height: 100px;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #28a745;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    input[type="checkbox"] {
+      margin-right: 10px;
+    }
+
+    label[for="declaration"], label[for="consent"] {
+      font-weight: normal;
+      font-size: 14px;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <form id="registrationForm">
+    <h2>Farmer Credit Card Registration Form</h2>
+
+    <!-- Personal Information Section -->
+    <div class="form-section">
+      <h3>Personal Information</h3>
+      <label for="fullName">Full Name (as per Aadhaar Card)</label>
+      <input type="text" id="fullName" required>
+
+      <label for="fatherName">Father's Name</label>
+      <input type="text" id="fatherName" required>
+
+      <label for="dob">Date of Birth</label>
+      <input type="date" id="dob" required>
+
+      <label for="gender">Gender</label>
+      <select id="gender" required>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+
+      <label for="mobile">Mobile Number</label>
+      <input type="tel" id="mobile" required>
+
+      <label for="aadhaar">Aadhaar Number</label>
+      <input type="text" id="aadhaar" required>
+
+      <label for="pan">PAN Card Number</label>
+      <input type="text" id="pan" required>
+
+      <label for="currentAddress">Current Address</label>
+      <textarea id="currentAddress" required></textarea>
+
+      <label for="permanentAddress">Permanent Address</label>
+      <textarea id="permanentAddress" required></textarea>
+    </div>
+
+    <!-- Land and Agricultural Details Section -->
+    <div class="form-section">
+      <h3>Land and Agricultural Details</h3>
+      <label for="landArea">Total Land Area (in hectares or acres)</label>
+      <input type="text" id="landArea" required>
+
+      <label for="irrigation">Irrigated/Non-Irrigated</label>
+      <select id="irrigation" required>
+        <option value="irrigated">Irrigated</option>
+        <option value="non-irrigated">Non-Irrigated</option>
+      </select>
+
+      <label for="landProof">Land Ownership Proof (Upload Document)</label>
+      <input type="file" id="landProof" required>
+
+      <label for="cropDetails">Type of Crops Grown</label>
+      <textarea id="cropDetails" required></textarea>
+    </div>
+
+    <!-- Identification and Supporting Documents Section -->
+    <div class="form-section">
+      <h3>Identification and Supporting Documents</h3>
+      <label for="applicantPhoto">Photo of the Applicant</label>
+      <input type="file" id="applicantPhoto" required>
+
+      <label for="idProof">Proof of Identity (Aadhaar, Voter ID, etc.)</label>
+      <input type="file" id="idProof" required>
+
+      <label for="addressProof">Proof of Address</label>
+      <input type="file" id="addressProof" required>
+
+      <label for="signature">Signature of the Applicant</label>
+      <input type="file" id="signature" required>
+    </div>
+
+    <!-- Declaration and Consent Section -->
+    <div class="form-section">
+      <h3>Declaration and Consent</h3>
+      <label>
+        <input type="checkbox" id="declaration" required> I agree to the terms and conditions.
+      </label>
+
+      <label>
+        <input type="checkbox" id="consent" required> I consent to document verification.
+      </label>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    document.getElementById("registrationForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      // Display success message
+      document.body.innerHTML = `
+        <div style="text-align: center; padding: 20px;">
+          <h2>Your registration form was successfully submitted!</h2>
+          <p>Thank you for registering. The KissanPay card will be directly delivered to the given address.</p>
+        </div>
+      `;
+    });
+  </script>
+</body>
+</html>
