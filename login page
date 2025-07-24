@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url("images/03.jpg"); /* Replace with your background image */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .login-form {
+            background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            width: 400px; /* Form width */
+            text-align: center;
+            backdrop-filter: blur(10px); /* Blur effect */
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .login-form h2 {
+            margin-bottom: 20px;
+            color: #fff;
+            font-size: 28px; /* Increased font size */
+        }
+
+        .login-options button {
+            width: 100%;
+            padding: 12px;
+            background-color: #2ec32e; /* Green */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-options button:hover {
+            background-color: #28a028;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .divider span {
+            padding: 0 10px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .login-form input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .login-form input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 15px 0;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .remember-forgot label {
+            display: flex;
+            align-items: center;
+        }
+
+        .remember-forgot input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        .remember-forgot a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+        }
+
+        .remember-forgot a:hover {
+            text-decoration: underline;
+            color: #fff;
+        }
+
+        .login-form button[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50; /* Green */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-form button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .SIGNUP {
+            margin-top: 20px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .SIGNUP a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        .SIGNUP a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-form">
+        <h2>Log in to KissanPay.</h2>
+        <div class="login-options">
+            <button id="google-login">Login with Google</button>
+        </div>
+        <div class="divider">
+            <span>or</span>
+        </div>
+        <form action="homepage.html">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <div class="remember-forgot">
+                <label>
+                    <input type="checkbox"> Remember me
+                </label>
+                <a href="#">Forgot your password?</a>
+            </div>
+            <button type="submit">Log In</button>
+        </form>
+        <div class="SIGNUP">
+            Don't have an account? <a href="signup.html">Create Account</a>
+        </div>
+    </div>
+</body>
+</html>
