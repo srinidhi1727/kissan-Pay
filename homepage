@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KISSAN PAY</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensure footer stays at the bottom */
+        }
+
+        /* Header Styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #4CAF50;
+            padding: 10px 20px;
+            color: white;
+            flex-shrink: 0; /* Prevent header from shrinking */
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center; /* Align logo and text vertically */
+            gap:0px; /* Space between logo and heading */
+        }
+
+        .logo img {
+            width: 80px; /* Adjusted logo size */
+            height: auto; /* Maintain aspect ratio */
+            display: block;
+        }
+
+        .main-heading {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0; /* Remove default margin */
+        }
+
+        .right-menu {
+            display: flex;
+            gap: 20px;
+        }
+
+        .right-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: text-decoration 0.3s ease; /* Smooth hover effect */
+        }
+
+        .right-menu a:hover {
+            text-decoration: underline;
+        }
+
+        /* Content Styles */
+        .content {
+            flex: 1; /* Allow content to grow and push footer down */
+            position: relative; /* For positioning text and button over the image */
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100vh; /* Fit to screen height */
+            object-fit: cover; /* Ensure the image covers the entire area */
+        }
+
+        .hero-text {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: rgb(0, 0, 0);
+        }
+
+        .hero-text h2 {
+            font-size: 36px;
+            margin: 0;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            margin: 10px 0 20px;
+        }
+
+        .apply-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease; /* Smooth hover effect */
+        }
+
+        .apply-button:hover {
+            background-color: #45a049;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #333;
+            color: rgb(243, 236, 236);
+            text-align: center;
+            padding: 10px 0;
+            flex-shrink: 0; /* Prevent footer from shrinking */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <div class="logo">
+                <img src="./images/kissanlogo.png" alt="Kissan Logo">
+            </div>
+            <div class="main-heading">KISSAN PAY</div>
+        </div>
+        <div class="right-menu">
+            <a href="#">About us</a>
+            <a href="#">Brands</a>
+            <a href="#">Products</a>
+            <a href="#">My Profile</a>
+        </div>
+    </header>
+    <div class="content">
+        <img src="./images/01.jpg" alt="Farmer Image" class="hero-image">
+        <div class="hero-text">
+            <h2>Supporting Farmers</h2>
+            <p>We are committed to empowering farmers with the tools and resources they need to succeed. Join us in our mission to support sustainable agriculture.</p>
+            <form action="./registrationform.html">
+                <button type="submit" class="apply-button">APPLY NOW</button>
+            </form>
+            
+        </div>
+    </div>
+    <footer>
+        &copy; 2025 Kissan Pay. All rights reserved.
+    </footer>
+    <script>
+    if (response.ok) {
+        const data = await response.json();
+        localStorage.setItem("token", data.token);
+        window.location.href = "homepage.html";
+        }
+</script>
+</body>
+</html>
